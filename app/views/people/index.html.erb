@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Pool</th>
       <th>Location</th>
       <th>Contact</th>
@@ -16,22 +16,22 @@
   </thead>
 
   <tbody>
-    <% @people.each do |person| %>
       <tr>
-        <td><%= person.name %></td>
-        <td><%= person.email %></td>
-        <td><%= person.pool %></td>
-        <td><%= person.location %></td>
-        <td><%= person.contact %></td>
-        <td><%= person.about_me %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= @people.first_name %></td>
+        <td><%= @people.last_name %></td>
+        <td><%= @people.pool %></td>
+        <td><%= @people.location %></td>
+        <td><%= @people.contact %></td>
+        <td><%= @people.about_me %></td>
+        <td><%= link_to 'Show', @people %></td>
+        <td><%= link_to 'Edit', edit_person_path(@people) %></td>
+        <td><%= link_to 'Destroy', @people, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+
+<%#= link_to 'New @people', new_people_path %>
