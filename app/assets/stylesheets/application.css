@@ -1,4 +1,4 @@
-/*
+
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+body {
+	background-image: url('office-background.jpg') !important;
+	text-align: center;
+}
+
+.wrapper {
+  /*background-image: url('rose.jpg');*/
+  margin: 0 auto;
+  padding: 5px;
+  max-width: 1100px;
+  min-height: 550px;
+  /*background-color: pink;*/
+}
+
+.wrapper::after {
+  content: "";
+  background: url('rose.jpg');
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 1100px;
+  min-height: 550px;
+  position: absolute;
+  z-index: -1;
+  margin: 0 auto;
+}
+
+
+/*header {
+     background-image: url(office-background.jpg);
+     /*background-color: red;*/
+     /*text-align: center;
+     height:100px;
+     width:100%;
+     margin:0px auto;*/
+
+/*}*/
+
+/*footer {
+   background-image: url(office-background.jpg);
+   text-align: center;
+   position: relative;
+   left:0px;
+   bottom:0px;
+   height:50px;
+   width:100%;
+
+}

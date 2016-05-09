@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @user = User.find(current_user.id)
     @own_profile = @profile.user_id == current_user.id ? true : false
   end
 

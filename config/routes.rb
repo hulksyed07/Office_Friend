@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :technologies
+  resources :issues
+  resources :messages
   get 'welcome/index'
 
 
