@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user_profile, only: [:edit, :update, :destroy]
+  before_action :set_profile, only: [:show]
 
   # GET /profiles
   # GET /profiles.json
@@ -12,6 +13,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @own_profile = @profile.user_id == current_user.id ? true : false
   end
 
   # GET /profiles/new
@@ -65,8 +67,11 @@ class ProfilesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_current_user_profile
+      @profile = Profile.find_by_user_id(current_user.id)
+    end
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = !params[:id].blank? ? Profile.find(params[:id]) : Profile.find_by_user_id(current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
