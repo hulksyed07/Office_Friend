@@ -16,17 +16,21 @@
   </thead>
 
   <tbody>
-      <tr>
-        <td><%= @profiles.first_name %></td>
-        <td><%= @profiles.last_name %></td>
-        <td><%= @profiles.pool %></td>
-        <td><%= @profiles.location %></td>
-        <td><%= @profiles.contact %></td>
-        <td><%= @profiles.about_me %></td>
-        <td><%= link_to 'Show', @profiles %></td>
-        <td><%#= link_to 'Edit', edit_profile_path(@profiles) %></td>
-        <td><%#= link_to 'Destroy', @profiles, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% unless @profiles.blank? %>
+        <% @profiles.each do |profile|%>
+          <tr>
+            <td><%= profile.first_name %></td>
+            <td><%= profile.last_name %></td>
+            <td><%= profile.pool %></td>
+            <td><%= profile.location %></td>
+            <td><%= profile.contact %></td>
+            <td><%= profile.about_me %></td>
+            <td><%= link_to 'Show', @profiles %></td>
+            <td><%#= link_to 'Edit', edit_profile_path(@profiles) %></td>
+            <td><%#= link_to 'Destroy', @profiles, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      <% end %>
   </tbody>
 </table>
 

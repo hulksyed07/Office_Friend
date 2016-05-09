@@ -1,6 +1,12 @@
 <% if @own_profile %>
   <h1>Welcome <%= @profile.first_name %> <%= @profile.last_name%></h1>
   <%= link_to 'Enter Message Pool', messages_path %>
+  <% if @user.is_admin? || @user.is_superadmin? %>
+    <%= link_to 'Available Technologies', technologies_path %>
+  <% end %>
+  <% if  @user.is_superadmin? %>
+    <%= link_to 'Roles', roles_path %>
+  <% end %>
 <% else %>
 
   <p id="notice"><%= notice %></p>

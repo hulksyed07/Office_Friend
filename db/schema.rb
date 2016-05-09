@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509114021) do
+ActiveRecord::Schema.define(version: 20160509134225) do
 
   create_table "issues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "description",   limit: 65535
@@ -21,15 +21,18 @@ ActiveRecord::Schema.define(version: 20160509114021) do
     t.boolean  "archived"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["technology_id"], name: "index_issues_on_technology_id", using: :btree
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "chat",        limit: 65535
     t.integer  "sender_id"
     t.integer  "reciever_id"
+    t.integer  "issue_id"
     t.boolean  "archived"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.index ["issue_id"], name: "index_messages_on_issue_id", using: :btree
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -39,9 +42,18 @@ ActiveRecord::Schema.define(version: 20160509114021) do
     t.string   "pool"
     t.string   "location"
     t.string   "contact"
+    t.integer  "role_id"
     t.text     "about_me",   limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["role_id"], name: "index_profiles_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "technologies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

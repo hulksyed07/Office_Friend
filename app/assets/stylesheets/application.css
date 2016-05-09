@@ -1,4 +1,4 @@
-
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -14,7 +14,7 @@
  *= require_self
  */
 body {
-	background-image: url('office-background.jpg') !important;
+	background-image: url('office-background.jpg');
 	text-align: center;
 }
 
@@ -62,4 +62,4 @@ body {
    height:50px;
    width:100%;
 
-}
+/*}*/

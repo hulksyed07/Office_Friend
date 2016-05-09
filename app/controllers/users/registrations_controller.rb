@@ -68,6 +68,9 @@ after_action :create_profile_after_user_reg, only: [:create]
   private
   def create_profile_after_user_reg
     puts '--------------------------------'
-    puts Profile.create(:user_id => current_user.id)
+    user = User.find(current_user.id)
+    role = Role.find_by_name('user')
+    profile = user.build_profile(:role_id => role.id)
+    profile.save!
   end
 end

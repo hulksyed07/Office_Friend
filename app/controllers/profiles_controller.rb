@@ -6,8 +6,9 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     # @profiles = Profile.find(current_user.id)
-    @profiles = User.find(current_user.id).profile
-    # @profiles = Profile.all
+    # @profiles = User.find(current_user.id).profile
+    # @profiles = (current_user.blank? ? Profile.all : Profile.find(:all, :conditions => ["user_id != ?", current_user.id]))
+    @profiles = Profile.all.count > 1 ? (Profile.find(:all, :conditions => ["user_id != ?", current_user.id])) : []
   end
 
   # GET /profiles/1

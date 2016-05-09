@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.text :chat
       t.integer :sender_id
       t.integer :reciever_id
-      t.integer :issue_id
+      t.references :issue
       t.boolean :archived
 
       t.timestamps
