@@ -17,13 +17,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :asker_id %>
-    <%= f.number_field :asker_id %>
-  </div>
-
-  <div class="field">
     <%= f.label :technology_id %>
-    <%= f.number_field :technology_id %>
+    <%= f.collection_select :technology_id, options_for_technology, :id, :name, include_blank: false %>
   </div>
 
   <div class="field">

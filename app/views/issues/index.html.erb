@@ -16,16 +16,7 @@
 
   <tbody>
     <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.description %></td>
-        <td><%= issue.asker_id %></td>
-        <td><%= issue.technology_id %></td>
-        <td><%= issue.is_solved %></td>
-        <td><%= issue.archived %></td>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= render 'issue', issue: issue %>
     <% end %>
   </tbody>
 </table>

@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
+    @issue = Issue.find(params[:issue_id])
   end
 
   # GET /messages/1/edit
@@ -25,12 +25,15 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
+    @issue = Issue.find(params[:issue_id])
+    @message = @issue.messages.build(message_params)
+    @message.sender_id = current_user.id
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        format.html { redirect_to issue_path(@issue), notice: 'Message was successfully created.' }
+        # format.json { render :show, status: :created, location: @message }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -57,8 +60,9 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to issue_path(@issue), notice: 'Message was successfully destroyed.' }
+      # format.json { head :no_content }
+      format.js
     end
   end
 

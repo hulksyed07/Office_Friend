@@ -1,0 +1,10 @@
+<tr>
+	<td><%= issue.description %></td>
+	<td><%= issue.asker.name %></td>
+	<td><%= issue.technology.name %></td>
+	<td><%= issue.is_solved %></td>
+	<td><%= issue.archived %></td>
+	<td><%= link_to 'Show', issue %></td>
+	<td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+	<td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

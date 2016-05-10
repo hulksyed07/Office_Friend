@@ -7,12 +7,12 @@
 
 <p>
   <strong>Asker:</strong>
-  <%= @issue.asker_id %>
+  <%= @issue.asker.name %>
 </p>
 
 <p>
   <strong>Technology:</strong>
-  <%= @issue.technology_id %>
+  <%= @issue.technology.name%>
 </p>
 
 <p>
@@ -27,3 +27,35 @@
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
 <%= link_to 'Back', issues_path %>
+
+<h2>Messages:</h2>
+<table>
+  <thead>
+    <th>Message:</th>
+    <th>Sender: </th>
+  </thead>
+  <tbody id= "messages">
+    <% @issue.messages.each do |message| %>
+      <%= render 'messages/message', message: message%>
+    <% end %>
+  <tbody>
+</table>
+
+
+<!-- <%#= link_to 'New Message', new_issue_message_path(@issue), remote: true %><br> -->
+<h2>Add a message:</h2>
+<%= form_for([@issue, @issue.messages.build], remote: true) do |f| %>
+  <p>
+    <%= f.label :chat %><br>
+    <%= f.text_area :chat %>
+  </p>
+  <p>
+    <%= f.label :archived %><br>
+    <%= f.check_box :archived %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+

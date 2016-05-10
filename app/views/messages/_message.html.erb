@@ -1,0 +1,9 @@
+<tr id = "message_<%= message.id %>" >
+  <td><%= message.chat %></td>
+  <td><%= message.sender.name %></td>
+<!--   <td><%#= message.reciever_id %></td>
+  <td><%#= message.archived %></td>
+  <td><%#= link_to 'Show', message %></td>
+  <td><%#= link_to 'Edit', edit_message_path(message) %></td> -->
+  <td><%= link_to 'Destroy', issue_message_path(message.issue_id,message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+</tr>

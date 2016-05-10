@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :roles
   resources :technologies
-  resources :issues
-  resources :messages
+  resources :issues do
+    resources :messages
+  end
   get 'welcome/index'
 
 

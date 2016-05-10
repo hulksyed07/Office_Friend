@@ -14,8 +14,16 @@
  *= require_self
  */
 body {
-	background-image: url('office-background.jpg');
+	/*background-image: url('ocean.jpg');*/
+  background-color: #65B5E6;
+  /*background-color: #8CD9F7;*/
 	text-align: center;
+  position: relative;
+  /*overflow: scroll;*/
+}
+
+table {
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -23,23 +31,35 @@ body {
   margin: 0 auto;
   padding: 5px;
   max-width: 1100px;
-  min-height: 550px;
+  height: auto;
+  /*overflow: scroll;*/
+  /*min-height: 550px;*/
   /*background-color: pink;*/
 }
 
+/*.text{
+       text-align: center;
+       overflow: scroll;
+       height: 610?px;
+       width: ?px;
+}
+*/
 .wrapper::after {
   content: "";
   background: url('rose.jpg');
+  /*background-color: white;*/
   opacity: 0.7;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   max-width: 1100px;
+  height: auto;
   min-height: 550px;
   position: absolute;
   z-index: -1;
   margin: 0 auto;
+  overflow: scroll;
 }
 
 

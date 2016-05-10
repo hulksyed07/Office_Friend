@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def user?
   	self.role.name == 'user'
   end
+
+  def name
+    self.profile.first_name.nil? ? self.email : (self.profile.first_name + ' ' + self.profile.last_name)
+  end
 end
