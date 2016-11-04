@@ -12,7 +12,7 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     @collection().append(data.message) #unless @userIsCurrentUser(data.message)
 
   # userIsCurrentUser: (message) ->
-    # $(message).attr('data-user-id') is $('meta[name=current-user]').attr('id')
+  #   $(message).attr('data-user-id') is $('meta[name=current-user]').attr('id')
 
   followCurrentIssue: ->
     if issueId = @collection().data('issue-id')
