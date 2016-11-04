@@ -1,0 +1,4 @@
+<section id="messages" data-channel="messages" data-issue-id="<%= issue.id %>">
+  <%= render issue.messages %>
+</section>
+<div id='new_message'><%= render 'messages/form', issue: issue %></div>

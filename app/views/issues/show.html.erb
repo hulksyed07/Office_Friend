@@ -35,27 +35,12 @@
     <th>Sender: </th>
   </thead>
   <tbody id= "messages">
-    <% @issue.messages.each do |message| %>
-      <%= render 'messages/message', message: message%>
-    <% end %>
+    <%= render 'messages/messages', :issue => @issue %>
   <tbody>
 </table>
 
 
 <!-- <%#= link_to 'New Message', new_issue_message_path(@issue), remote: true %><br> -->
-<h2>Add a message:</h2>
-<%= form_for([@issue, @issue.messages.build], remote: true) do |f| %>
-  <p>
-    <%= f.label :chat %><br>
-    <%= f.text_area :chat %>
-  </p>
-  <p>
-    <%= f.label :archived %><br>
-    <%= f.check_box :archived %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
+<!-- <h2>Add a message:</h2>
+<%#= render 'messages/form', :issue => @issue%> -->
 

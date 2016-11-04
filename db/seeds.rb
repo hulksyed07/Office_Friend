@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Role.create([{:name => 'superadmin'},{:name => 'admin'}, {:name => 'simple_user'}])
+Technology.create([{:name => 'Ruby'},{:name => 'Drupal'}, {:name => 'Java'}])
+

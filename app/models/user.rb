@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def user?
-  	self.role.name == 'user'
+  	self.role.name == 'simple_user'
   end
 
   def name
