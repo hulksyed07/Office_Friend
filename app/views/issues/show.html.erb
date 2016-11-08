@@ -28,16 +28,7 @@
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
 <%= link_to 'Back', issues_path %>
 
-<h2>Messages:</h2>
-<table>
-  <thead>
-    <th>Message:</th>
-    <th>Sender: </th>
-  </thead>
-  <tbody id= "messages">
-    <%= render 'messages/messages', :issue => @issue %>
-  <tbody>
-</table>
+<%= render 'messages/messages', :issue => @issue %>
 
 
 <!-- <%#= link_to 'New Message', new_issue_message_path(@issue), remote: true %><br> -->

@@ -9,7 +9,8 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     , 1000
 
   received: (data) ->
-    @collection().append(data.message) #unless @userIsCurrentUser(data.message)
+    # @collection().append(data.message) #unless @userIsCurrentUser(data.message)
+    $("[data-channel='messages'] tbody").append(data.message)
 
   # userIsCurrentUser: (message) ->
   #   $(message).attr('data-user-id') is $('meta[name=current-user]').attr('id')
