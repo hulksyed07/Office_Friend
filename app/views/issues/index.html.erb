@@ -2,6 +2,7 @@
 
 <h1>Issues</h1>
 
+<section id="issues" data-channel="issues" >
 <table>
   <thead>
     <tr>
@@ -22,5 +23,6 @@
 </table>
 
 <br>
+</section>
 
-<%= link_to 'New Issue', new_issue_path %>
+<%= render 'form', issue: @issue %>

@@ -5,6 +5,7 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.all
+    @issue = Issue.new
   end
 
   # GET /issues/1
@@ -30,7 +31,7 @@ class IssuesController < ApplicationController
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
-        format.json { render :show, status: :created, location: @issue }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @issue.errors, status: :unprocessable_entity }
