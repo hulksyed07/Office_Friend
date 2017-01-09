@@ -31,8 +31,6 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = Profile.new(profile_params)
-
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -47,6 +45,12 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    technologies = Technology.where(id: params[:profile][:technologies].compact)
+    @profile.technologies = []
+    technologies.each do |technology|
+      @profile.technologies << technology
+    end
+
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -79,6 +83,8 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :pool, :location, :contact, :about_me)
+      params.require(:profile).permit(:first_name, :last_name, :pool, :location, :contact, :about_me )
+      # params.require(:profile).permit(:first_name, :last_name, :pool, :location, :contact, :about_me, :technologies )
+      # params.require(:profile).permit(:first_name, :last_name, :pool, :location, :contact, :about_me ).merge({technologies: []}
     end
 end

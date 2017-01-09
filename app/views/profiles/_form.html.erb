@@ -41,6 +41,11 @@
     <%= f.text_area :about_me %>
   </div>
 
+  <div class="field">
+    <%= f.label :technologies %>
+    <%= f.select :technologies, options_from_collection_for_select(get_all_technologies, :id, :name, @profile.technologies.pluck(:id) ), {}, {:multiple => true} %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
